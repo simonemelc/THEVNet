@@ -104,7 +104,8 @@ pip install -r requirements.txt
 ```
 
 4. **Download pre-trained model**
-    Download from [https://github.com/SoonminHwang/rgbt-ped-detection](https://github.com/SoonminHwang/rgbt-ped-detection) ancd place it in:
+    1. Download from [https://github.com/SoonminHwang/rgbt-ped-detection](https://github.com/SoonminHwang/rgbt-ped-detection)
+    2. Place it in:
 
 ```bash
 └── checkpoints/
