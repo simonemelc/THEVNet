@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Framework](https://img.shields.io/badge/Framework-PyTorch-red)](https://pytorch.org/)
 
-**Authors:** Simone Melcarne and Jean-Luc Dugelay  
+**Authors:** Simone Melcarne and Jean-Luc Dugelay
 *Eurecom Research Center, Digital Security Department, Biot, France*
 
 ---
@@ -14,11 +14,13 @@
 </p>
 
 ## 📢 Publication
+
 This paper has been accepted for publication at the **21st International Conference on Computer Vision Theory and Applications (VISAPP 2026)**.
 
 ---
 
 ## 📄 Abstract
+
 Reconstructing visible spectrum images from unconventional sensors is a timely and relevant problem in computer vision. In settings where standard cameras fail or are not allowed, thermal and event-based cameras can offer complementary advantages—robustness to darkness, fog, motion, and high dynamic range conditions—while also being privacy-preserving and energy efficient.
 
 We propose a simple **dual-encoder, gated-fusion network** that synthesizes visible-like images from thermal frames and event streams. The thermal branch captures structure and coarse appearance, while the event branch models spatio-temporal changes and adds detailed edge information. Their outputs are combined via a residual gated fusion mechanism and decoded into a colored image.
@@ -33,32 +35,36 @@ We propose a simple **dual-encoder, gated-fusion network** that synthesizes visi
 
 Our method leverages the complementary nature of two modalities to reconstruct a standard RGB-like image ($I \in \mathbb{R}^{3 \times H \times W}$):
 
-1.  **Thermal Input ($T$):** Provides semantic layout and object presence (processed by a ResNet-style encoder).
-2.  **Event Input ($E$):** A voxel grid of events that offers sharp edge and motion cues (processed by a 3D-Conv head + ResNet encoder).
+1. **Thermal Input ($T$):** Provides semantic layout and object presence (processed by a ResNet-style encoder).
+2. **Event Input ($E$):** A voxel grid of events that offers sharp edge and motion cues (processed by a 3D-Conv head + ResNet encoder).
 
-### Key Components:
+### Key Components
+
 * **Dual-Fusion Module:** Features from both encoders are fused at multiple resolutions using a **Gated Fusion Block (GFB)**. This allows the network to selectively inject event details into the thermal baseline:
-    $$f_{TE}^{(i)} = f_T^{(i)} + \alpha_i \cdot f_E^{(i)}$$
+
+$$f_{TE}^{(i)} = f_T^{(i)} + \alpha_i \cdot f_E^{(i)}$$
+
 * **Color Space:** The network predicts in the **Lab color space** to better separate luminance and chrominance.
-* **Loss Function:** We train end-to-end using a combination of Spatial L1 ($L_{s-l_1}$), Multi-Scale SSIM ($L_{MS-SSIM}$), and Color L1 ($L_{ab-l_1}$) losses.
+* **Loss Function:** Training is end-to-end using a combination of Spatial L1 ($L_{s-l_1}$), Multi-Scale SSIM ($L_{MS-SSIM}$), and Color L1 ($L_{ab-l_1}$) losses.
 
 ---
 
 ## 📂 Dataset Preparation
 
-To reproduce our results, you need to set up the dataset following the structure below. Our framework relies on the **KAIST Multispectral Benchmark** (for Thermal/RGB) and pre-processed **Event Voxel Grids** (simulated via V2E).
+To reproduce our results, set up the dataset following the structure below. The framework relies on the **KAIST Multispectral Benchmark** (Thermal/RGB) and pre-processed **Event Voxel Grids** simulated via V2E.
 
 ### 1. Download Data
-1.  **KAIST-MS Dataset (Thermal & RGB):**
-    Download the official dataset from the [KAIST Project Page](https://github.com/SoonminHwang/rgbt-ped-detection).
-    * You need the `lwir` (Thermal) and `visible` (RGB) folders for the day sets (`set01`, `set02`, `set06`, `set07`, `set08`).
-2.  **Event Data (Voxel Grids):**
-    Since we use simulated events aligned with KAIST frames, you must download our pre-processed voxel grids (`.npy` files).
-    * 📥 **[INSERT LINK TO YOUR VOXEL DATA HERE]**
-    * *Note: These events were generated using the [V2E Simulator](https://github.com/SensorsINI/v2e).*
+
+1. **KAIST-MS Dataset (Thermal & RGB):**
+   Download from the official repository: [https://github.com/SoonminHwang/rgbt-ped-detection](https://github.com/SoonminHwang/rgbt-ped-detection)
+   Required folders: `lwir` (Thermal) and `visible` (RGB) for the day sets (`set01`, `set02`, `set06`, `set07`, `set08`).
+
+2. **Event Data (Voxel Grids):**
+   Download the pre-processed voxel grids (`.npy` files):
+   **[INSERT LINK TO YOUR VOXEL DATA HERE]**
+   Generated using the V2E simulator: [https://github.com/SensorsINI/v2e](https://github.com/SensorsINI/v2e)
 
 ### 2. Folder Structure
-Organize your data directory (e.g., `./data`) to match the hierarchy expected by the dataloader. The structure must preserve the `setXX/VideoXX` organization.
 
 ```text
 /path/to/your/data/
@@ -66,13 +72,13 @@ Organize your data directory (e.g., `./data`) to match the hierarchy expected by
 ├── kaist-rgbt/                # Original KAIST Dataset
 │   ├── set01/
 │   │   ├── V000/
-│   │   │   ├── lwir/          # Contains I00000.jpg, etc.
-│   │   │   └── visible/       # Contains I00000.jpg, etc.
+│   │   │   ├── lwir/          # I00000.jpg, ...
+│   │   │   └── visible/       # I00000.jpg, ...
 │   │   └── ...
 │   ├── set02/
 │   └── ...
 │
-└── voxel_grid_soft_rgb/       # Our Pre-processed Event Data
+└── voxel_grid_soft_rgb/       # Pre-processed Event Data
     ├── set01/
     │   ├── V000/
     │   │   ├── set01_V000_00000.npy
@@ -82,17 +88,37 @@ Organize your data directory (e.g., `./data`) to match the hierarchy expected by
     └── ...
 ```
 
+---
+
 ## Installation
-1. Clone the repository: git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git)
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 cd YOUR_REPO_NAME
-2. Create and activate the environment: conda create -n thermal-event-fusion python=3.9 -y
+```
+
+2. **Create and activate the environment**
+
+```bash
+conda create -n thermal-event-fusion python=3.9 -y
 conda activate thermal-event-fusion
-3. Install dependencies: pip install -r requirements.txt
+```
+
+3. **Install dependencies**
+
+```bash
+pip install -r requirements.txt
+```
+
+---
 
 ## Usage
-### Training
-To train the model with the configuration described in the paper (3D Encoder, Gated Fusion, Full Loss), run:
 
+### Training
+
+```bash
 python train.py \
   --mode full \
   --encoder_type 3d \
@@ -103,10 +129,12 @@ python train.py \
   --rgb_dir ./data/kaist-rgbt \
   --event_dir ./data/voxel_grid_soft_rgb \
   --split_json utils/video_split_day_global.json
+```
 
-  ### Evaluation
-  To evaluate on the Test Set and generate metrics/visuals:
-  python test.py \
+### Evaluation
+
+```bash
+python test.py \
   --mode full \
   --encoder_type 3d \
   --fusion gated \
@@ -116,17 +144,24 @@ python train.py \
   --thermal_dir ./data/kaist-rgbt \
   --rgb_dir ./data/kaist-rgbt \
   --event_dir ./data/voxel_grid_soft_rgb
+```
 
-## Citation 
-If you find this work useful for your research, please cite our paper:
+---
+
+## Citation
+
+If you find this work useful, please cite:
+
+```bibtex
 @inproceedings{melcarne2026fusing,
-  author    = {Melcarne, Simone and Dugelay, Jean-Luc},
-  title     = {Fusing Thermal and Event Data for Visible Spectrum Image Reconstruction},
-  booktitle = {Proceedings of the 21st International Conference on Computer Vision Theory and Applications - Volume 1},
-  year      = {2026},
-  pages     = {1282--1290},
-  publisher = {SciTePress},
+  author       = {Melcarne, Simone and Dugelay, Jean-Luc},
+  title        = {Fusing Thermal and Event Data for Visible Spectrum Image Reconstruction},
+  booktitle    = {Proceedings of the 21st International Conference on Computer Vision Theory and Applications - Volume 1},
+  year         = {2026},
+  pages        = {1282--1290},
+  publisher    = {SciTePress},
   organization = {INSTICC},
-  isbn      = {978-989-758-804-4},
-  issn      = {2184-4321}
+  isbn         = {978-989-758-804-4},
+  issn         = {2184-4321}
 }
+```
