@@ -54,7 +54,10 @@ python test.py --thermal input/thermal.png --events input/events.npz --output re
 ```
 
 ## Citation
-If you use find this work interesting, please cite:
+
+If you find this work useful for your research, please cite our paper:
+
+```bibtex
 @inproceedings{melcarne2026fusing,
   title={Fusing Thermal and Event Data for Visible Spectrum Image Reconstruction},
   author={Melcarne, Simone and Dugelay, Jean-Luc},
