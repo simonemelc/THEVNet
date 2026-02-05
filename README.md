@@ -4,9 +4,9 @@
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Framework](https://img.shields.io/badge/Framework-PyTorch-red)](https://pytorch.org/)
 
-**Authors:** S. Melcarne¹, J.L. Dugelay¹
+**Authors:** Simone Melcarne and Jean-Luc Dugelay
 
-¹ *Eurecom Research Center, Sophia Antipolis, France*
+Eurecom Research Center, Sophia Antipolis, France
 ---
 
 <p align="center">
@@ -16,14 +16,6 @@
 ## Publication
 
 This paper has been accepted for publication at the **21st International Conference on Computer Vision Theory and Applications (VISAPP 2026)**.
-
----
-
-## Abstract
-
-Reconstructing visible spectrum images from unconventional sensors is a timely and relevant problem in computer vision. In settings where standard cameras fail or are not allowed, thermal and event-based cameras can offer complementary advantages—robustness to darkness, fog, motion, and high dynamic range conditions—while also being privacy-preserving and energy efficient.
-
-We propose a simple **dual-encoder, gated-fusion network** that synthesizes visible-like images from thermal frames and event streams. The thermal branch captures structure and coarse appearance, while the event branch models spatio-temporal changes and adds detailed edge information. Their outputs are combined via a residual gated fusion mechanism and decoded into a colored image.
 
 ---
 
