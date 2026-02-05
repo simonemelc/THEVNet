@@ -13,13 +13,13 @@
   <img src="figures/visual_comparison.PNG" alt="Visual Comparison" width="100%">
 </p>
 
-## 📢 Publication
+## Publication
 
 This paper has been accepted for publication at the **21st International Conference on Computer Vision Theory and Applications (VISAPP 2026)**.
 
 ---
 
-## 📄 Abstract
+## Abstract
 
 Reconstructing visible spectrum images from unconventional sensors is a timely and relevant problem in computer vision. In settings where standard cameras fail or are not allowed, thermal and event-based cameras can offer complementary advantages—robustness to darkness, fog, motion, and high dynamic range conditions—while also being privacy-preserving and energy efficient.
 
@@ -27,7 +27,7 @@ We propose a simple **dual-encoder, gated-fusion network** that synthesizes visi
 
 ---
 
-## 🚀 The Framework
+## The Framework
 
 <p align="center">
   <img src="figures/pipeline_fusenet.png" alt="Framework Overview" width="100%">
@@ -49,7 +49,7 @@ $$f_{TE}^{(i)} = f_T^{(i)} + \alpha_i \cdot f_E^{(i)}$$
 
 ---
 
-## 📂 Dataset Preparation
+## Dataset Preparation
 
 To reproduce our results, set up the dataset following the structure below. The framework relies on the **KAIST Multispectral Benchmark** (Thermal/RGB) and pre-processed **Event Voxel Grids** simulated via V2E.
 
@@ -95,7 +95,7 @@ To reproduce our results, set up the dataset following the structure below. The 
 1. **Clone the repository**
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git](https://github.com/simonemelc/From-Thermal-and-Event-to-RGB---VISAPP2026.git)
+git clone https://github.com/simonemelc/From-Thermal-and-Event-to-RGB---VISAPP2026.git
 cd From-Thermal-and-Event-to-RGB---VISAPP2026
 ```
 
