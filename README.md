@@ -9,7 +9,7 @@
 ---
 
 <p align="center">
-  <img src="figures/visual_comparison" alt="Framework Overview" width="100%">
+  <img src="figures/visual_comparison" alt="Visual" width="100%">
 </p>
 
 ## Publication
@@ -25,7 +25,7 @@ We propose a simple **dual-encoder, gated-fusion network** that synthesizes visi
 ## The Framework
 
 <p align="center">
-  <img src="figures/pipeline" alt="Framework Overview" width="100%">
+  <img src="figures/pipeline_fusenet" alt="Framework Overview" width="100%">
 </p>
 
 Our method leverages the complementary nature of two modalities to reconstruct a standard RGB-like image ($I \in \mathbb{R}^{3 \times H \times W}$):
