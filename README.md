@@ -1,7 +1,6 @@
 # Fusing Thermal and Event Data for Visible Spectrum Image Reconstruction
 
 [![Conference](https://img.shields.io/badge/Conference-VISAPP_2026-blue)](https://visapp.scitevents.org/)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 **Authors:** Simone Melcarne and Jean-Luc Dugelay
 
@@ -10,7 +9,7 @@
 ---
 
 <p align="center">
-  <img src="figures/pipeline.png" alt="Framework Overview" width="100%">
+  <img src="figures/visual_comparison" alt="Framework Overview" width="100%">
 </p>
 
 ## Publication
@@ -24,6 +23,11 @@ Reconstructing visible spectrum images from unconventional sensors is a timely a
 We propose a simple **dual-encoder, gated-fusion network** that synthesizes visible-like images from thermal frames and event streams. The thermal branch captures structure and coarse appearance, while the event branch models spatio-temporal changes and adds detailed edge information. Their outputs are combined via a residual gated fusion mechanism and decoded into a colored image.
 
 ## The Framework
+
+<p align="center">
+  <img src="figures/pipeline" alt="Framework Overview" width="100%">
+</p>
+
 Our method leverages the complementary nature of two modalities to reconstruct a standard RGB-like image ($I \in \mathbb{R}^{3 \times H \times W}$):
 
 1.  **Thermal Input ($T$):** Provides semantic layout and object presence (processed by a ResNet-style encoder).
