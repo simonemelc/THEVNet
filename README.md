@@ -6,7 +6,6 @@
 
 **Authors:** S. Melcarne¹ and J.L. Dugelay¹
 
-
 ¹ *Eurecom Research Center, Sophia Antipolis, France*
 ---
 
