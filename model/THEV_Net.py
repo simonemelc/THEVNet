@@ -32,7 +32,7 @@ def norm3d(num_ch, kind="bn"):
 # Blocks
 # =========================
 class ResidualBlock(nn.Module):
-    """Standard ResNet Block used in Encoder and Decoder [cite: 360, 361]"""
+    """Standard ResNet Block used in Encoder and Decoder"""
     def __init__(self, in_ch, out_ch, dropout=0.0, norm="bn"):
         super().__init__()
         # always match channels
@@ -119,7 +119,7 @@ class FusionBlock(nn.Module):
 # Encoders
 # =========================
 class Encoder(nn.Module):
-    """Thermal Encoder: 4-stage residual pyramid [cite: 359]"""
+    """Thermal Encoder: 4-stage residual pyramid"""
     def __init__(self, in_ch, base=32, dropout=0.0, norm="bn"):
         super().__init__()
         C = base
@@ -154,7 +154,7 @@ class EventEncoder2D(nn.Module):
 
 class EventEncoder3D(nn.Module):
     """
-    3D Conv Head + 2D Encoder [cite: 366]
+    3D Conv Head + 2D Encoder
     """
     def __init__(self, base=32, dropout=0.0, norm="bn"):
         super().__init__()
